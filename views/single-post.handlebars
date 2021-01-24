@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+                <a href="/post/{{post.id}}">
+                    <h2 class="post-title"> {{post.title}}</h2>
+                    <h3 class="post-subtitle">({{post.content}})</h3>
+                </a>
+                <div class="post-meta">
+                    <a href="#">{{post.user.username}}</a>
+                    {{format_date post.created_at}}
+
+                    <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+                </div>
+            </div>
+
+
+            {{#if loggedIn}}
+            <form class="comment-form">
+                <div>
+                    <textarea class="comment-body"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-success" id="add-comment">add comment</button>
+                </div>
+            </form>
+            {{/if}}
+
+            {{> comments post.comments}}
+        </div>
+    </div>
+</div>
+
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+<script src="/javascript/logout.js"></script>
+{{/if}}
+
+<!-- Bootstrap core JavaScript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/js/clean-blog.min.js"></script>
+{{!--
+</main> --}}
